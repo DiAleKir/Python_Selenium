@@ -32,3 +32,15 @@ class RadioButtonPageLocators:
     NO_BUTTON = (By.XPATH, '//label[@for="noRadio"]')
     OUTPUT_RESULT = (By.XPATH, '//span[@class="text-success"]')
 
+
+class WebTablesPageLocators:
+
+    ADD_BUTTON = (By.XPATH, '//button[@id="addNewRecordButton"]')
+    FIRST_NAME = (By.XPATH, '//input[@id="firstName"]')
+    LAST_NAME = (By.XPATH, '//input[@id="lastName"]')
+    EMAIL = (By.XPATH, '//input[@id="userEmail"]')
+    AGE = (By.XPATH, '//input[@id="age"]')
+    SALARY = (By.XPATH, '//input[@id="salary"]')
+    DEPARTMENT = (By.XPATH, '//input[@id="department"]')
+    SUBMIT = (By.XPATH, '//button[@id="submit"]')
+

@@ -1,6 +1,6 @@
 import random
 import re
-from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage
+from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablesPage
 
 
 class TestElements:
@@ -38,3 +38,12 @@ class TestElements:
             assert output_yes == 'Yes', "'Yes' has not been selected"
             assert output_impressive == 'Impressive', "'Impressive' has not been selected"
             assert output_no == 'No', "'No' has not been selected"
+
+    class TestWebTables:
+
+        def test_web_tables_add_person(self, driver):
+            web_tables_page = WebTablesPage(driver, 'https://demoqa.com/webtables')
+            web_tables_page.open()
+            web_tables_page.add_new_person()
+
+
