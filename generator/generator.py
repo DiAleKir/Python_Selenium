@@ -12,7 +12,7 @@ def generated_person():
         first_name=faker_ru.first_name(),
         last_name=faker_ru.last_name(),
         email=faker_ru.email(),
-        age= random.randint(18,80),
+        age=random.randint(18, 80),
         salary= random.randint(20000, 200000),
         department=faker_ru.job(),
         current_address=faker_ru.address(),

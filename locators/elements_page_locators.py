@@ -35,12 +35,15 @@ class RadioButtonPageLocators:
 
 class WebTablesPageLocators:
 
+    #Add person form
     ADD_BUTTON = (By.XPATH, '//button[@id="addNewRecordButton"]')
     FIRST_NAME = (By.XPATH, '//input[@id="firstName"]')
     LAST_NAME = (By.XPATH, '//input[@id="lastName"]')
-    EMAIL = (By.XPATH, '//input[@id="userEmail"]')
     AGE = (By.XPATH, '//input[@id="age"]')
+    EMAIL = (By.XPATH, '//input[@id="userEmail"]')
     SALARY = (By.XPATH, '//input[@id="salary"]')
     DEPARTMENT = (By.XPATH, '//input[@id="department"]')
     SUBMIT = (By.XPATH, '//button[@id="submit"]')
 
+    #tables
+    PERSONS_LIST = (By.XPATH, '//div[@class="rt-tr-group"]')

@@ -44,6 +44,7 @@ class TestElements:
         def test_web_tables_add_person(self, driver):
             web_tables_page = WebTablesPage(driver, 'https://demoqa.com/webtables')
             web_tables_page.open()
-            web_tables_page.add_new_person()
-
+            new_person = web_tables_page.add_new_person()
+            all_persons = web_tables_page.check_new_person()
+            assert new_person in all_persons
 
