@@ -118,3 +118,12 @@ class WebTablesPage(BasePage):
         row = delete_button.find_element(By.XPATH, './/ancestor::div[@class="rt-tr-group"]')
         return row.text.splitlines()
 
+    def update_person_info(self):
+        person_info = next(generated_person())
+        age = person_info.age
+        self.element_is_visible(self.locators.UPDATE_BUTTON).click()
+        self.element_is_visible(self.locators.AGE).send_keys(age)
+        self.element_is_visible(self.locators.SUBMIT).click()
+        return str(age)
+
+

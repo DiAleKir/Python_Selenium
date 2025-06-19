@@ -56,4 +56,14 @@ class TestElements:
             table_result = web_tables_page.check_search_person()
             assert key_word in table_result, "The person has not been founded in the table"
 
+        def test_web_tables_edit_person(self, driver):
+            web_tables_page = WebTablesPage(driver, 'https://demoqa.com/webtables')
+            web_tables_page.open()
+            last_name = web_tables_page.add_new_person()[1]
+            web_tables_page.search_person(last_name)
+            age = web_tables_page.update_person_info()
+            row = web_tables_page.check_search_person()
+            assert age in row, "The person has not been changed"
+
+
 
