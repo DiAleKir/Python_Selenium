@@ -47,3 +47,6 @@ class WebTablesPageLocators:
 
     #tables
     PERSONS_LIST = (By.XPATH, '//div[@class="rt-tr-group"]')
+    SEARCH_INPUT = (By.XPATH, '//input[@id="searchBox"]')
+    DELETE_BUTTON = (By.XPATH, '//span[@title="Delete"]')
+

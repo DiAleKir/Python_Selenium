@@ -46,5 +46,14 @@ class TestElements:
             web_tables_page.open()
             new_person = web_tables_page.add_new_person()
             all_persons = web_tables_page.check_new_person()
-            assert new_person in all_persons
+            assert new_person in all_persons, "The person has not been added to the table"
+
+        def test_web_tables_person_search(self, driver):
+            web_tables_page = WebTablesPage(driver, 'https://demoqa.com/webtables')
+            web_tables_page.open()
+            key_word = web_tables_page.add_new_person()[random.randint(0,5)]
+            web_tables_page.search_person(key_word)
+            table_result = web_tables_page.check_search_person()
+            assert key_word in table_result, "The person has not been founded in the table"
+
 
