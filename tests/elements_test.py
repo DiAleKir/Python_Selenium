@@ -88,18 +88,18 @@ class TestElements:
             button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
             message =  button_page.click_double_click_me_button()
-            assert message == "You have done a double click"
+            assert message == "You have done a double click", "The button 'double click me' was not pressed"
 
 
         def test_right_click_me_button(self, driver):
             button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
             message = button_page.click_right_click_me_button()
-            assert message == "You have done a right click"
+            assert message == "You have done a right click", "The button 'right click me' was not pressed"
 
         def test_click_me_button(self, driver):
             button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
             message = button_page.click_click_me_button()
-            assert message == "You have done a dynamic click"
+            assert message == "You have done a dynamic click", "The button 'click me' was not pressed"
 
