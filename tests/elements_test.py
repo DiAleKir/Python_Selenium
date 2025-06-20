@@ -1,7 +1,8 @@
 import random
 
 
-from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablesPage, ButtonPage, LinksPage
+from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablesPage, ButtonPage, LinksPage, \
+    UploadAndDownloadPage
 
 
 class TestElements:
@@ -135,4 +136,13 @@ class TestElements:
             links_page.open()
             response_code = links_page.check_create_link('https://demoqa.com/invalid-url')
             assert response_code == 404, 'The link does not work or status code is non 404'
+
+    class TestUploadAndDownload:
+
+        def test_upload_file(self, driver):
+            up_and_down_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+            up_and_down_page.open()
+            file_name, result = up_and_down_page.upload_file()
+            assert file_name == result, 'The file has not been uploaded'
+
 

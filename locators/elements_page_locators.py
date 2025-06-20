@@ -64,11 +64,20 @@ class ButtonsPageLocators:
 
 
 class LinksPageLocators:
+
     SIMPLE_LINK = (By.XPATH, '//a[@id="simpleLink"]')
     CREATED_LINK = (By.XPATH, '//a[@id="created"]')
     BAD_REQUEST_LINK = (By.XPATH, '//a[@id="bad-request"]')
     FORBIDDEN_LINK = (By.XPATH, '//a[@id="forbidden"]')
     NOT_FOUND_LINK = (By.XPATH, '//a[@id="invalid-url"]')
+
+
+class UploadAndDownloadPageLocators:
+
+    UPLOAD_BUTTON = (By.XPATH, '//input[@id="uploadFile"]')
+    UPLOADED_RESULT = (By.XPATH, '//p[@id="uploadedFilePath"]')
+    DOWNLOAD_BUTTON = (By.XPATH, '//input[@id="downloadFile"]')
+
 
 
 

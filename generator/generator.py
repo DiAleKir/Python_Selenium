@@ -18,3 +18,10 @@ def generated_person():
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address()
     )
+
+def generated_file():
+    path = rf'C:\PythonProject\PythonSelenium\filetest{random.randint(1,100)}.txt'
+    file = open(path, 'w+')
+    file.write(f'Test text {random.randint(1,1000)}')
+    file.close()
+    return file.name, path
