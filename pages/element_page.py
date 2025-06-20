@@ -3,11 +3,9 @@ import random
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-
-from conftest import driver
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablesPageLocators
+    WebTablesPageLocators, ButtonsPageLocators
 from pages.base_page import BasePage
 
 
@@ -146,3 +144,22 @@ class WebTablesPage(BasePage):
     def check_count_rows(self):
         list_rows = self.elements_are_present(self.locators.PERSONS_LIST)
         return len(list_rows)
+
+
+class ButtonPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def click_double_click_me_button(self):
+        self.double_click(self.element_is_clickable(self.locators.DOUBLE_CLICK_ME_BUTTON))
+        return self.check_click_result(self.locators.DOUBLE_CLICK_ME_MESSAGE)
+
+    def click_right_click_me_button(self):
+        self.right_click(self.element_is_clickable(self.locators.RIGHT_CLICK_ME_BUTTON))
+        return self.check_click_result(self.locators.RIGHT_CLICK_ME_MESSAGE)
+
+    def click_click_me_button(self):
+        self.element_is_clickable(self.locators.CLICK_ME_BUTTON).click()
+        return self.check_click_result(self.locators.CLICK_ME_MESSAGE)
+
+    def check_click_result(self, element):
+        return self.element_is_present(element).text

@@ -53,4 +53,14 @@ class WebTablesPageLocators:
     NO_ROWS_FOUND = (By.XPATH, '//div[@class="rt-noData"]')
     ROWS_PER_PAGE = (By.XPATH, '//select[@aria-label="rows per page"]')
 
+class ButtonsPageLocators:
+
+    DOUBLE_CLICK_ME_BUTTON = (By.XPATH, '//button[@id="doubleClickBtn"]')
+    RIGHT_CLICK_ME_BUTTON = (By.XPATH, '//button[@id="rightClickBtn"]')
+    CLICK_ME_BUTTON = (By.XPATH, '//button[text()="Click Me"]')
+    DOUBLE_CLICK_ME_MESSAGE = (By.XPATH, '//p[@id="doubleClickMessage"]')
+    RIGHT_CLICK_ME_MESSAGE = (By.XPATH, '//p[@id="rightClickMessage"]')
+    CLICK_ME_MESSAGE = (By.XPATH, '//p[@id="dynamicClickMessage"]')
+
+
 
