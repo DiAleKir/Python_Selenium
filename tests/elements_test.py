@@ -118,3 +118,21 @@ class TestElements:
             response_code = links_page.check_create_link('https://demoqa.com/created')
             assert response_code == 201, 'The link does not work or status code is non 201'
 
+        def test_bad_request_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_create_link('https://demoqa.com/bad-request')
+            assert response_code == 400, 'The link does not work or status code is non 400'
+
+        def test_forbidden_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_create_link('https://demoqa.com/forbidden')
+            assert response_code == 403, 'The link does not work or status code is non 403'
+
+        def test_not_found_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_create_link('https://demoqa.com/invalid-url')
+            assert response_code == 404, 'The link does not work or status code is non 404'
+

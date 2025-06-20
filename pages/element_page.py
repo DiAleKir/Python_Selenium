@@ -187,6 +187,27 @@ class LinksPage(BasePage):
         else:
             return request.status_code
 
+    def check_bad_request_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            return self.element_is_clickable(self.locators.BAD_REQUEST_LINK).click()
+        else:
+            return request.status_code
+
+
+    def check_forbidden_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            return self.element_is_clickable(self.locators.FORBIDDEN_LINK).click()
+        else:
+            return request.status_code
+
+    def check_not_found_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            return self.element_is_clickable(self.locators.NOT_FOUND_LINK).click()
+        else:
+            return request.status_code
 
 
 
