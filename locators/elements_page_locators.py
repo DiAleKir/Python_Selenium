@@ -76,7 +76,7 @@ class UploadAndDownloadPageLocators:
 
     UPLOAD_BUTTON = (By.XPATH, '//input[@id="uploadFile"]')
     UPLOADED_RESULT = (By.XPATH, '//p[@id="uploadedFilePath"]')
-    DOWNLOAD_BUTTON = (By.XPATH, '//input[@id="downloadFile"]')
+    DOWNLOAD_BUTTON = (By.XPATH, '//a[@id="downloadButton"]')
 
 
 
