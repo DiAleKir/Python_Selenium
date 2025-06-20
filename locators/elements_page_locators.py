@@ -50,5 +50,7 @@ class WebTablesPageLocators:
     SEARCH_INPUT = (By.XPATH, '//input[@id="searchBox"]')
     DELETE_BUTTON = (By.XPATH, '//span[@title="Delete"]')
     UPDATE_BUTTON = (By.XPATH, '//span[@title="Edit"]')
+    NO_ROWS_FOUND = (By.XPATH, '//div[@class="rt-noData"]')
+    ROWS_PER_PAGE = (By.XPATH, '//select[@aria-label="rows per page"]')
 
 
