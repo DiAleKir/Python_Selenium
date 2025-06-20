@@ -63,4 +63,10 @@ class ButtonsPageLocators:
     CLICK_ME_MESSAGE = (By.XPATH, '//p[@id="dynamicClickMessage"]')
 
 
+class LinksPageLocators:
+    SIMPLE_LINK = (By.XPATH, '//a[@id="simpleLink"]')
+    CREATED_LINK = (By.XPATH, '//a[@id="created"]')
+
+
+
 
