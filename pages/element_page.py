@@ -1,8 +1,10 @@
 import random
 
-from selenium.webdriver.common.by import By
-from urllib3.http2.probe import acquire_and_get
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+
+from conftest import driver
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
     WebTablesPageLocators
@@ -132,3 +134,15 @@ class WebTablesPage(BasePage):
     def check_deleted(self):
         return self.element_is_visible(self.locators.NO_ROWS_FOUND).text
 
+    def select_up_to_some_rows(self):
+        count = [5,10,20,25,50,100]
+        data = []
+        for x in count:
+            count_row_button = self.element_is_visible(self.locators.ROWS_PER_PAGE)
+            Select(count_row_button).select_by_value(str(x))
+            data.append(self.check_count_rows())
+        return data
+
+    def check_count_rows(self):
+        list_rows = self.elements_are_present(self.locators.PERSONS_LIST)
+        return len(list_rows)
