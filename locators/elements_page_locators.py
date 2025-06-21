@@ -25,6 +25,7 @@ class CheckBoxPageLocators:
     TITLE_ITEM = (By.XPATH, './/ancestor::span[@class = "rct-text"]')
     OUTPUT_RESULT = (By.XPATH, '//span[@class="text-success"]')
 
+
 class RadioButtonPageLocators:
 
     YES_BUTTON = (By.XPATH, '//label[@for="yesRadio"]')
@@ -53,6 +54,7 @@ class WebTablesPageLocators:
     NO_ROWS_FOUND = (By.XPATH, '//div[@class="rt-noData"]')
     ROWS_PER_PAGE = (By.XPATH, '//select[@aria-label="rows per page"]')
 
+
 class ButtonsPageLocators:
 
     DOUBLE_CLICK_ME_BUTTON = (By.XPATH, '//button[@id="doubleClickBtn"]')
@@ -77,6 +79,13 @@ class UploadAndDownloadPageLocators:
     UPLOAD_BUTTON = (By.XPATH, '//input[@id="uploadFile"]')
     UPLOADED_RESULT = (By.XPATH, '//p[@id="uploadedFilePath"]')
     DOWNLOAD_BUTTON = (By.XPATH, '//a[@id="downloadButton"]')
+
+
+class DynamicPropertiesPageLocators:
+
+    ENABLE_AFTER_BUTTON = (By.XPATH, '//button[@id="enableAfter"]')
+    COLOR_CHANGE_BUTTON = (By.XPATH, '//button[@id="colorChange"]')
+    VISIBLE_AFTER_BUTTON = (By.XPATH, '//button[@id="visibleAfter"]')
 
 
 
