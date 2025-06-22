@@ -45,3 +45,6 @@ class BasePage:
     def wait_the_attribute_of_element_to_change(self, locator, expected_value, timeout = 10):
         return (wait(self.driver, timeout)
                 .until(EC.text_to_be_present_in_element_attribute(locator, 'class', expected_value)))
+
+    def switch_window(self, id_window):
+        self.driver.switch_to.window(self.driver.window_handles[id_window])
