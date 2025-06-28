@@ -33,3 +33,9 @@ class DatePickerPageLocators:
     DATE_AND_TIME_YEAR_LIST = ('xpath', '//div[@class="react-datepicker__year-option"]')
     DATE_AND_TIME_DAY = ('xpath', '//div[contains(@class , "react-datepicker__day react-date")]')
     DATE_AND_TIME_TIME = ('xpath', '//li[@class="react-datepicker__time-list-item "]')
+
+
+class SliderPageLocators:
+
+    INPUT_SLIDER = ('xpath', '//input[@class="range-slider range-slider--primary"]')
+    VALUE_SLIDER = ('xpath', '//input[@id="sliderValue"]')

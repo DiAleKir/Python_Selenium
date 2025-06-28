@@ -48,3 +48,8 @@ class BasePage:
 
     def switch_window(self, id_window):
         self.driver.switch_to.window(self.driver.window_handles[id_window])
+
+    def slide_action(self, element, x_coords, y_coords):
+        action = ActionChains(self.driver)
+        action.drag_and_drop_by_offset(element, x_coords, y_coords)
+        action.perform()

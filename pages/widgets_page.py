@@ -5,7 +5,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import Select
 
 from generator.generator import generated_date
-from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators
+from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
+    SliderPageLocators
 from pages.base_page import BasePage
 
 
@@ -113,3 +114,13 @@ class DatePickerPage(BasePage):
         self.set_date_from_list(self.locators.DATE_AND_TIME_TIME, date.time)
         value_date_after = input_day_and_time.get_attribute('value')
         return value_date_before, value_date_after
+
+class SliderPage(BasePage):
+    locators = SliderPageLocators()
+
+    def change_slider_value(self):
+        value_before = self.element_is_visible(self.locators.VALUE_SLIDER).get_attribute('value')
+        slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
+        self.slide_action(slider_input, random.randint(1,100), 0)
+        value_after = self.element_is_visible(self.locators.VALUE_SLIDER).get_attribute('value')
+        return value_before, value_after
