@@ -1,4 +1,5 @@
 import random
+import time
 
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
@@ -6,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 
 from generator.generator import generated_date
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators
+    SliderPageLocators, ProgressBarPageLocators
 from pages.base_page import BasePage
 
 
@@ -123,4 +124,17 @@ class SliderPage(BasePage):
         slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
         self.slide_action(slider_input, random.randint(1,100), 0)
         value_after = self.element_is_visible(self.locators.VALUE_SLIDER).get_attribute('value')
+        return value_before, value_after
+
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarPageLocators
+
+    def change_progress_bar_value(self):
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR_INFO).text
+        progress_bar_button = self.element_is_visible(self.locators.START_BUTTON)
+        progress_bar_button.click()
+        time.sleep(random.randint(1,5))
+        progress_bar_button.click()
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR_INFO).text
         return value_before, value_after
