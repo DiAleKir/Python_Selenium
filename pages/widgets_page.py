@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 
 from generator.generator import generated_date
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators
+    SliderPageLocators, ProgressBarPageLocators, ToolTipsPageLocators
 from pages.base_page import BasePage
 
 
@@ -138,3 +138,25 @@ class ProgressBarPage(BasePage):
         progress_bar_button.click()
         value_after = self.element_is_present(self.locators.PROGRESS_BAR_INFO).text
         return value_before, value_after
+
+
+class ToolTipsPage(BasePage):
+    locators = ToolTipsPageLocators()
+
+    def get_text_from_tool_tips(self, locator):
+        hover = self.element_is_visible(locator)
+        self.move_to_element(hover)
+        tool_tip_text = self.element_is_visible(self.locators.TOOL_TIP)
+        text = tool_tip_text.text
+        return text
+
+    def check_tool_tips(self, hover_name):
+        if hover_name == 'button':
+            tool_tip = self.get_text_from_tool_tips(self.locators.BUTTON_WITH_HOVER)
+        elif hover_name == 'text-field':
+            tool_tip = self.get_text_from_tool_tips(self.locators.TEXT_FIELD_WITH_HOVER)
+        elif hover_name == 'contrary':
+            tool_tip= self.get_text_from_tool_tips(self.locators.CONTRARY_LINK)
+        elif hover_name == 'section':
+            tool_tip= self.get_text_from_tool_tips(self.locators.SECTION_LINK)
+        return tool_tip

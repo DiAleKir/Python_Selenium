@@ -1,5 +1,5 @@
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, ToolTipsPage
 
 
 class TestWidgets:
@@ -76,3 +76,30 @@ class TestWidgets:
             progress_bar_page.open()
             value_before, value_after = progress_bar_page.change_progress_bar_value()
             assert value_before != value_after, 'The progress bar value has not been change'
+
+
+    class TestToolTips:
+
+        def test_button_tool_tips (self, driver):
+            tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips_page.open()
+            tool_tip_text = tool_tips_page.check_tool_tips('button')
+            assert tool_tip_text == 'You hovered over the Button', 'Hover is missing or incorrect content'
+
+        def test_text_field_tool_tips(self, driver):
+            tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips_page.open()
+            tool_tip_text = tool_tips_page.check_tool_tips('text-field')
+            assert tool_tip_text == 'You hovered over the text field', 'Hover is missing or incorrect content'
+
+        def test_contrary_tool_tips(self, driver):
+            tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips_page.open()
+            tool_tip_text = tool_tips_page.check_tool_tips('contrary')
+            assert tool_tip_text == 'You hovered over the Contrary', 'Hover is missing or incorrect content'
+
+        def test_section_tool_tips(self, driver):
+            tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips_page.open()
+            tool_tip_text = tool_tips_page.check_tool_tips('section')
+            assert tool_tip_text == 'You hovered over the 1.10.32', 'Hover is missing or incorrect content'

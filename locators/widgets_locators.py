@@ -44,3 +44,16 @@ class ProgressBarPageLocators:
 
     START_BUTTON = ('xpath', '//button[@id="startStopButton"]')
     PROGRESS_BAR_INFO  = ('xpath', '//div[@class="progress-bar bg-info"]')
+
+
+class ToolTipsPageLocators:
+
+    BUTTON_WITH_HOVER = ('xpath', '//button[@id ="toolTipButton"]')
+    BUTTON_TOOL_TIP = ('xpath', '//button[@aria-describedby="buttonToolTip"]')
+    TEXT_FIELD_WITH_HOVER = ('xpath', '//input[@id="toolTipTextField"]')
+    TEXT_FIELD_TOOL_TIP = ('xpath', '//input[@aria-describedby="textFieldToolTip"]')
+    CONTRARY_LINK = ('xpath', '//div[@id="texToolTopContainer"]/a[1]')
+    CONTRARY_LINK_TOOL_TIP = ('xpath', '//a[@aria-describedby="contraryTexToolTip"]')
+    SECTION_LINK = ('xpath', '//div[@id="texToolTopContainer"]/a[2]')
+    SECTION_LINK_TOOL_TIP = ('xpath', '//a[@aria-describedby="sectionToolTip"]')
+    TOOL_TIP = ('xpath', '//div[@class="tooltip-inner"]')
