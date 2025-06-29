@@ -1,9 +1,12 @@
 import random
 
-from data.data import Person
+from idna.compat import nameprep
+
+from data.data import Person, Date
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
+faker_en = Faker()
 Faker.seed()
 
 
@@ -28,3 +31,11 @@ def generated_file():
     file.write(f'Test text {random.randint(1, 1000)}')
     file.close()
     return file.name, path
+
+def generated_date():
+    yield Date(
+        day = faker_en.day_of_month(),
+        month = faker_en.month_name(),
+        year = faker_en.year(),
+        time = faker_en.time()
+    )
