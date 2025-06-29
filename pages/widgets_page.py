@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 
 from generator.generator import generated_date
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, ToolTipsPageLocators
+    SliderPageLocators, ProgressBarPageLocators, ToolTipsPageLocators, MenuPageLocators
 from pages.base_page import BasePage
 
 
@@ -160,3 +160,15 @@ class ToolTipsPage(BasePage):
         elif hover_name == 'section':
             tool_tip= self.get_text_from_tool_tips(self.locators.SECTION_LINK)
         return tool_tip
+
+
+class MenuPage(BasePage):
+    locators = MenuPageLocators()
+
+    def check_menu(self):
+        menu_item_list = self.elements_are_present(self.locators.MENU_ITEM_LIST)
+        data = []
+        for item in menu_item_list:
+            self.move_to_element(item)
+            data.append(item.text)
+        return data

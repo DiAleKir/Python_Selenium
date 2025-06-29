@@ -57,3 +57,8 @@ class ToolTipsPageLocators:
     SECTION_LINK = ('xpath', '//div[@id="texToolTopContainer"]/a[2]')
     SECTION_LINK_TOOL_TIP = ('xpath', '//a[@aria-describedby="sectionToolTip"]')
     TOOL_TIP = ('xpath', '//div[@class="tooltip-inner"]')
+
+
+class MenuPageLocators:
+
+    MENU_ITEM_LIST = ('xpath', '//ul[@id="nav"]//a')
