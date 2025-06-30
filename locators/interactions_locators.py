@@ -14,3 +14,11 @@ class SelectablePageLocators:
     TAB_GRID = ('xpath', '//a[@id="demo-tab-grid"]')
     ITEM_GRID = ('xpath', '//div[@id="gridContainer"]//li')
     ITEM_GRID_ACTIVE = ('xpath', '//div[@id="gridContainer"]//li[contains(@class, "active")]')
+
+
+class ResizablePageLocators:
+
+    RESIZABLE_BOX = ('xpath', '//div[@id="resizableBoxWithRestriction"]')
+    RESIZABLE_BOX_HANDLE = ('xpath', '//div[@id="resizableBoxWithRestriction"]//span')
+    RESIZABLE = ('xpath', '//div[@id="resizable"]')
+    RESIZABLE_HANDLE = ('xpath', '//div[@id="resizable"]//span')
