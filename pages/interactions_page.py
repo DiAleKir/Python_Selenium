@@ -1,6 +1,6 @@
 import random
 
-from locators.interactions_locators import SortablePageLocators, SelectablePageLocators
+from locators.interactions_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
 from pages.base_page import BasePage
 
 
@@ -50,3 +50,28 @@ class SelectablePage(BasePage):
         for element in active_elements:
             active_list.append(element.text)
         return active_list
+
+
+class ResizablePage(BasePage):
+    locators = ResizablePageLocators()
+
+    def change_size_resizable_box(self):
+        locator = self.element_is_visible(self.locators.RESIZABLE_BOX)
+        handle_locator = self.element_is_visible(self.locators.RESIZABLE_BOX_HANDLE)
+
+        start_size = locator.get_attribute('style').replace(';', '')
+
+        self.slide_action(handle_locator, -50, -50)
+        min_size = locator.get_attribute('style').replace(';', '')
+
+        self.slide_action(handle_locator, 350, 150)
+        max_size = locator.get_attribute('style').replace(';', '')
+
+        return start_size, min_size, max_size
+
+    def change_size_resizable(self):
+        size_before = self.element_is_present(self.locators.RESIZABLE).get_attribute('style')
+        self.slide_action(self.element_is_present(self.locators.RESIZABLE_HANDLE), random.randint(-100, 100),
+                          random.randint(-100, 100))
+        size_after = self.element_is_present(self.locators.RESIZABLE).get_attribute('style')
+        return size_before, size_after
