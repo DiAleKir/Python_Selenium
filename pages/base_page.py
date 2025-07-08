@@ -2,11 +2,11 @@ from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
+
 class BasePage:
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
-
 
     def open(self):
         self.driver.get(self.url)
@@ -42,7 +42,7 @@ class BasePage:
         action.context_click(element)
         action.perform()
 
-    def wait_the_attribute_of_element_to_change(self, locator, expected_value, timeout = 10):
+    def wait_the_attribute_of_element_to_change(self, locator, expected_value, timeout=10):
         return (wait(self.driver, timeout)
                 .until(EC.text_to_be_present_in_element_attribute(locator, 'class', expected_value)))
 
