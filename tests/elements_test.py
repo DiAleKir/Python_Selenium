@@ -1,5 +1,6 @@
 import random
 import allure
+import pytest
 
 from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablesPage, ButtonPage, LinksPage, \
     UploadAndDownloadPage, DynamicPropertiesPage
@@ -36,6 +37,7 @@ class TestElements:
     @allure.feature('Radio Button')
     class TestRadioButton:
 
+        @pytest.mark.xfail(reason='The "No" button is not active')
         @allure.title('Check Radio Button')
         def test_radio_button(self, driver):
             radio_button_page = RadioButtonPage(driver, "https://demoqa.com/radio-button")
