@@ -155,8 +155,7 @@ class WebTablesPage(BasePage):
 
     @allure.step('Update person information')
     def update_person_info(self):
-        person_info = next(generated_person())
-        age = person_info.age
+        age = random.randint(18, 90)
         self.element_is_visible(self.locators.UPDATE_BUTTON).click()
         self.element_is_visible(self.locators.AGE).send_keys(age)
         self.element_is_visible(self.locators.SUBMIT).click()
