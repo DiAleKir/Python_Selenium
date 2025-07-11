@@ -1,6 +1,7 @@
 import random
 import time
 
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import Select
@@ -14,6 +15,7 @@ from pages.base_page import BasePage
 class AccordianPage(BasePage):
     locators = AccordianPageLocators()
 
+    @allure.step('Check the accordian')
     def check_accordian(self, accordian_num):
         accordian = {'first':
                          {'title': self.locators.FIRST_SECTION,
@@ -25,13 +27,15 @@ class AccordianPage(BasePage):
                          {'title': self.locators.THIRD_SECTION,
                           'text': self.locators.THIRD_SECTION_TEXT}
                      }
-        section_title = self.element_is_visible(accordian[accordian_num]['title'])
-        section_title.click()
-        try:
-            section_text = self.element_is_visible(accordian[accordian_num]['text']).text
-        except TimeoutException:
+        with allure.step('Choosing an accordion'):
+            section_title = self.element_is_visible(accordian[accordian_num]['title'])
             section_title.click()
-            section_text = self.element_is_visible(accordian[accordian_num]['text']).text
+        with allure.step('Checking text in accordion'):
+            try:
+                section_text = self.element_is_visible(accordian[accordian_num]['text']).text
+            except TimeoutException:
+                section_title.click()
+                section_text = self.element_is_visible(accordian[accordian_num]['text']).text
         return [section_title.text, len(section_text)]
 
 
@@ -80,14 +84,18 @@ class AutoCompletePage(BasePage):
 class DatePickerPage(BasePage):
     locators = DatePickerPageLocators()
 
+    @allure.step('Select a date')
     def select_date(self):
         date = next(generated_date())
         input_date = self.element_is_visible(self.locators.DATE_INPUT)
-        value_date_before =input_date.get_attribute('value')
+        value_date_before = input_date.get_attribute('value')
         input_date.click()
-        self.set_date_by_text(self.locators.DATE_SELECT_MONTH, date.month)
-        self.set_date_by_text(self.locators.DATE_SELECT_YEAR, date.year)
-        self.set_date_from_list(self.locators.DATE_SELECT_DAY, date.day)
+        with allure.step('Set the month'):
+            self.set_date_by_text(self.locators.DATE_SELECT_MONTH, date.month)
+        with allure.step('Set the year'):
+            self.set_date_by_text(self.locators.DATE_SELECT_YEAR, date.year)
+        with allure.step('Set the day'):
+            self.set_date_from_list(self.locators.DATE_SELECT_DAY, date.day)
         value_date_after = input_date
         return value_date_before, value_date_after
 
@@ -102,17 +110,22 @@ class DatePickerPage(BasePage):
                 item.click()
                 break
 
+    @allure.step('Select the date and time')
     def select_day_and_time(self):
         date = next(generated_date())
         input_day_and_time = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
         value_date_before = input_day_and_time.get_attribute('value')
         input_day_and_time.click()
-        self.element_is_visible(self.locators.DATE_AND_TIME_MONTH).click()
-        self.set_date_from_list(self.locators.DATE_AND_TIME_MONTH_LIST, date.month)
-        self.element_is_visible(self.locators.DATE_AND_TIME_YEAR).click()
-        self.set_date_from_list(self.locators.DATE_AND_TIME_YEAR_LIST, '2020')
-        self.set_date_from_list(self.locators.DATE_AND_TIME_DAY, date.day)
-        self.set_date_from_list(self.locators.DATE_AND_TIME_TIME, date.time)
+        with allure.step('Set the month'):
+            self.element_is_visible(self.locators.DATE_AND_TIME_MONTH).click()
+            self.set_date_from_list(self.locators.DATE_AND_TIME_MONTH_LIST, date.month)
+        with allure.step('Set the year'):
+            self.element_is_visible(self.locators.DATE_AND_TIME_YEAR).click()
+            self.set_date_from_list(self.locators.DATE_AND_TIME_YEAR_LIST, '2020')
+        with allure.step('Set the day'):
+            self.set_date_from_list(self.locators.DATE_AND_TIME_DAY, date.day)
+        with allure.step('Set the time'):
+            self.set_date_from_list(self.locators.DATE_AND_TIME_TIME, date.time)
         value_date_after = input_day_and_time.get_attribute('value')
         return value_date_before, value_date_after
 
